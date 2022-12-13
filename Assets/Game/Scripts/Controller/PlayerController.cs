@@ -14,9 +14,16 @@ public class PlayerController : MonoBehaviour
         AddCar();
     }
     public void AddCar()
-    { 
+    {
         GameObject car = Instantiate(carPrefab);
         car.GetComponent<PathFollower>().pathCreator = FindObjectOfType<PathCreator>();
         currentCars.Add(car);
+    }
+    public void Merge()
+    {
+        for (int i = 0; i < currentCars.Count; i++)
+        {
+
+        }
     }
 }

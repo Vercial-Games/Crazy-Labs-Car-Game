@@ -44,7 +44,6 @@ public class CarController : MonoBehaviour
             }
         }
     }
-
     private void BuffControl()
     {
         if (Input.GetMouseButtonDown(0) && !carMover.OnStation())
