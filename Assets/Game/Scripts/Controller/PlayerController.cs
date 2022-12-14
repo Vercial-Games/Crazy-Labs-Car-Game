@@ -23,6 +23,10 @@ public class PlayerController : MonoBehaviour
 
     public bool isMerging;
 
+    public float BuffCooldown;
+
+    float CdTimer;
+
     private void Awake()
     {
         instance = this;
@@ -36,6 +40,36 @@ public class PlayerController : MonoBehaviour
         UIManager.instance.addCarButton.interactable = AddCarControl();
         UIManager.instance.mergeButton.interactable = MergeControl();
         UIManager.instance.incomeButton.interactable = IncomeControl();
+
+        SpeedBuff();
+        CooldownTimer();
+    }
+    private void SpeedBuff()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Time.timeScale = 4;
+            SetCoolDown(0);
+        }
+    }
+    public float SetCoolDown(float value)
+    {
+        return CdTimer = value;
+    }
+    private void CooldownTimer()
+    {
+        CdTimer += Time.deltaTime;
+        if (CdTimer >= BuffCooldown)
+        {
+            SmoothResetSpeed(3, 1);
+        }
+    }
+    public float SmoothResetSpeed(float value, float equal)
+    {
+        if (Time.timeScale > equal)
+            return Time.timeScale -= value * Time.deltaTime;
+
+        return Time.timeScale = equal;
     }
 
     #region AddCar
@@ -163,6 +197,7 @@ public class PlayerController : MonoBehaviour
         incomePrice += 10;
 
         MoneyManager.instance.incomeSpeed += 0.5f;
+
         MoneyManager.instance.IncreaseIncomeValue(2);
     }
 

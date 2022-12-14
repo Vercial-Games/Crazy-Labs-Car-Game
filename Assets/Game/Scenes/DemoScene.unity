@@ -911,10 +911,11 @@ MonoBehaviour:
   TaxiCount: 0
   UberCount: 0
   BusCount: 0
-  carPrice: 20
-  mergePrice: 20
-  incomePrice: 20
+  carPrice: 0
+  mergePrice: 10
+  incomePrice: 10
   isMerging: 0
+  BuffCooldown: 0.3
 --- !u!1 &466764970
 GameObject:
   m_ObjectHideFlags: 0
@@ -1116,7 +1117,7 @@ Transform:
   - {fileID: 1083789548}
   - {fileID: 1125992014}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &636867585
 GameObject:
@@ -1516,8 +1517,8 @@ Transform:
   m_LocalPosition: {x: -540, y: -960, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 853273883}
-  m_RootOrder: 0
+  m_Father: {fileID: 1061884702}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &772758498
 PrefabInstance:
@@ -1671,7 +1672,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   incomeSpeed: 1
-  currentMoney: 5
+  currentMoney: 10
 --- !u!4 &772859542
 Transform:
   m_ObjectHideFlags: 0
@@ -1705,106 +1706,6 @@ MonoBehaviour:
   addCarButton: {fileID: 1277253002}
   mergeButton: {fileID: 1718965675}
   incomeButton: {fileID: 1024547887}
---- !u!1 &853273879
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 853273883}
-  - component: {fileID: 853273882}
-  - component: {fileID: 853273881}
-  - component: {fileID: 853273880}
-  m_Layer: 5
-  m_Name: Canvas
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &853273880
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 853273879}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IgnoreReversedGraphics: 1
-  m_BlockingObjects: 0
-  m_BlockingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
---- !u!114 &853273881
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 853273879}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
-  m_ReferencePixelsPerUnit: 100
-  m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
-  m_PhysicalUnit: 3
-  m_FallbackScreenDPI: 96
-  m_DefaultSpriteDPI: 96
-  m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
---- !u!223 &853273882
-Canvas:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 853273879}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
-  m_PixelPerfect: 0
-  m_ReceivesEvents: 1
-  m_OverrideSorting: 0
-  m_OverridePixelPerfect: 0
-  m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
-  m_TargetDisplay: 0
---- !u!224 &853273883
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 853273879}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
-  m_Children:
-  - {fileID: 742588931}
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0, y: 0}
 --- !u!1 &886256042
 GameObject:
   m_ObjectHideFlags: 0
@@ -1836,7 +1737,7 @@ Transform:
   - {fileID: 250350048}
   - {fileID: 735806794}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &963194225
 GameObject:
@@ -2062,8 +1963,9 @@ RectTransform:
   - {fileID: 319269124}
   - {fileID: 1068562459}
   - {fileID: 255273598}
+  - {fileID: 742588931}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2080,6 +1982,14 @@ PrefabInstance:
     - target: {fileID: 1171275030151820149, guid: 07293f00a83a6ef46b9f5c99435e5fb2, type: 3}
       propertyPath: m_Name
       value: Income
+      objectReference: {fileID: 0}
+    - target: {fileID: 2954632360207304399, guid: 07293f00a83a6ef46b9f5c99435e5fb2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 401016615}
+    - target: {fileID: 2954632360207304399, guid: 07293f00a83a6ef46b9f5c99435e5fb2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: IncomeUpgrade
       objectReference: {fileID: 0}
     - target: {fileID: 4066975013906891845, guid: 07293f00a83a6ef46b9f5c99435e5fb2, type: 3}
       propertyPath: m_SizeDelta.x
@@ -2109,6 +2019,12 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 458571105520427028, guid: 90d7363fe8c438041aaf6ce13f4c1035, type: 3}
+    - target: {fileID: 4349015080509592622, guid: 07293f00a83a6ef46b9f5c99435e5fb2, type: 3}
+      propertyPath: m_text
+      value: '100
+
+'
+      objectReference: {fileID: 0}
     - target: {fileID: 5518249858599607708, guid: 07293f00a83a6ef46b9f5c99435e5fb2, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3422,7 +3338,7 @@ Transform:
   - {fileID: 705507995}
   - {fileID: 1498583900}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1918556699
 GameObject:

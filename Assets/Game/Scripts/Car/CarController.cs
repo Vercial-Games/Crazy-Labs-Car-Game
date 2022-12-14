@@ -24,7 +24,6 @@ public class CarController : MonoBehaviour
         if (forwardCar != null) return;
 
         pathFollower.speed = carMover.GetCurrentSpeed();
-        BuffControl();
     }
     private void FixedUpdate()
     {
@@ -44,14 +43,6 @@ public class CarController : MonoBehaviour
             {
                 forwardCar = null;
             }
-        }
-    }
-    private void BuffControl()
-    {
-        if (Input.GetMouseButtonDown(0) && !carMover.OnStation())
-        {
-            carMover.SpeedBuff();
-            carMover.SetCoolDown(0);
         }
     }
     public void LevelUp()

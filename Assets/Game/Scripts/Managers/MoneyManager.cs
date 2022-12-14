@@ -6,7 +6,7 @@ public class MoneyManager : MonoBehaviour
 {
     public static MoneyManager instance;
 
-    public float incomeSpeed=1;
+    public float incomeSpeed=0.5f;
     [SerializeField]float currentMoney = 5;
 
     float incomeValue = 2;
@@ -18,7 +18,7 @@ public class MoneyManager : MonoBehaviour
 
     private void Update()
     {
-        currentMoney += Time.deltaTime*incomeSpeed;
+        currentMoney += Time.unscaledDeltaTime*incomeSpeed;
     }
 
     public float GetCurrentMoney()

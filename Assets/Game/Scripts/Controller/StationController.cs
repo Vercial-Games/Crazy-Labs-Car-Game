@@ -64,8 +64,8 @@ public class StationController : MonoBehaviour
             GameObject passanger = PassangerPool.instance.GetPooledObject();
             passanger.SetActive(true);
             passanger.transform.position = car.transform.position;
-            passanger.transform.DOJump(dropPosition.position, 0.5f, 1, 1);
-            yield return new WaitForSeconds(0.2f);
+            passanger.transform.DOJump(dropPosition.position, 0.5f, 1, 1.5f);
+            yield return new WaitForSeconds(0.4f);
             StartCoroutine(PassangerRandomMove(passanger));
             MoneyManager.instance.IncreaseCurrentMoney(MoneyManager.instance.GetIncomeValue());
         }
@@ -84,15 +84,15 @@ public class StationController : MonoBehaviour
         for (int i = 0; i < carType.PassangerCapacity;)
         {
             carController.PassangersCount++;
-            passangerStation.passangers[i].transform.DOJump(car.transform.position, 0.5f, 1, 1);
+            passangerStation.passangers[i].transform.DOJump(car.transform.position, 0.5f, 1, 1.5f);
 
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.4f);
 
             passangerStation.fullArea[i] = false;
             StartCoroutine(ClosePassangerMesh(passangerStation.passangers[i]));
             i++;
         }
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.6f);
 
         gate.CloseGate();
         passangerStation.PassangersMoveForward(carType.PassangerCapacity);
@@ -105,18 +105,19 @@ public class StationController : MonoBehaviour
     {
         Vector3 passangerScale = new Vector3(0.173201054f, 0.173201054f, 0.173201054f);
 
-        passanger.transform.DOScale(0, 1f);
-        yield return new WaitForSeconds(1f);
+        passanger.transform.DOScale(0, 2f);
+        yield return new WaitForSeconds(2f);
         passanger.SetActive(false);
         passanger.transform.DOScale(passangerScale, 0.1f);
 
     }
     IEnumerator PassangerRandomMove(GameObject passanger)
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
 
         int random = Random.Range(0, randomPlaces.Length);
-        passanger.transform.DOMove(randomPlaces[random].position,2);
+
+        passanger.transform.DOMove(randomPlaces[random].position,4);
 
         yield return new WaitForSeconds(4);
         ClosePassangerMesh(passanger);

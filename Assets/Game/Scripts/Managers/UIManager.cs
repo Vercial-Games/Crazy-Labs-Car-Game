@@ -27,9 +27,9 @@ public class UIManager : MonoBehaviour
     {
         money.text = ((int)MoneyManager.instance.GetCurrentMoney()).ToString();
 
-        carPrice.text = PlayerController.instance.carPrice.ToString();
-        mergePrice.text = PlayerController.instance.mergePrice.ToString();
-        incomePrice.text = PlayerController.instance.incomePrice.ToString();
+        carPrice.text = "$ " + PlayerController.instance.carPrice.ToString();
+        mergePrice.text = "$ " + PlayerController.instance.mergePrice.ToString();
+        incomePrice.text = "$ " + PlayerController.instance.incomePrice.ToString();
     }
 
 
