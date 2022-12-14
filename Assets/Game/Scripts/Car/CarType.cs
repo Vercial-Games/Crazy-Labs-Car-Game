@@ -52,7 +52,6 @@ public class CarType : MonoBehaviour
         {
             PlayerController.instance.UberCount--;
         }
-        Destroy(this);
     }
     private void GetCarType()
     {
