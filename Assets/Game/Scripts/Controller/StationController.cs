@@ -73,7 +73,7 @@ public class StationController : MonoBehaviour
             HapticManager.instance.SelectHaptic();
             yield return new WaitForSeconds(0.4f);
             StartCoroutine(PassangerRandomMove(passanger));
-            MoneyManager.instance.IncreaseCurrentMoney(MoneyManager.instance.GetIncomeValue());
+
         }
 
         yield return new WaitForSeconds(1);
@@ -124,6 +124,7 @@ public class StationController : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
 
+        MoneyManager.instance.IncreaseCurrentMoney(MoneyManager.instance.GetIncomeValue());
         passanger.GetComponent<PassangerChar>().canvasAnim.Play();
         UIManager.instance.MoneyColorAnim();
 

@@ -89,12 +89,12 @@ public class PlayerController : MonoBehaviour
     }
     public void AddCar()
     {
-        carPrice += 10;
+        MoneyManager.instance.DecreaseCurrentMoney(carPrice);
+        carPrice += 5;
         GameObject car = Instantiate(carPrefab);
         car.GetComponent<PathFollower>().pathCreator = FindObjectOfType<PathCreator>();
         currentCars.Add(car);
     }
-
 
 
     #endregion
@@ -130,24 +130,14 @@ public class PlayerController : MonoBehaviour
             }
             return true;
         }
-        else if (BusCount >= 3)
-        {
-            for (int i = 0; i < currentCars.Count; i++)
-            {
-                CarType type = currentCars[i].GetComponent<CarType>();
-
-                if (type.carType.ToString() == "Bus")
-                    mergeCars.Add(currentCars[i].GetComponent<CarController>());
-            }
-            return true;
-        }
 
         return false;
 
     }
     public void Merge()
     {
-        mergePrice += 10;
+        MoneyManager.instance.DecreaseCurrentMoney(mergePrice);
+        mergePrice += 5;
         StartCoroutine(Merging());
     }
     IEnumerator Merging()
@@ -199,7 +189,8 @@ public class PlayerController : MonoBehaviour
     }
     public void IncomeUpgrade()
     {
-        incomePrice += 10;
+        MoneyManager.instance.DecreaseCurrentMoney(incomePrice);
+        incomePrice += 5;
 
         MoneyManager.instance.incomeSpeed += 0.5f;
 

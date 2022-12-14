@@ -521,7 +521,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pooledObjects: []
   passangerPrefab: {fileID: 362997206989403009, guid: b5a49e1840077c14194b929e3ac381ed, type: 3}
-  amount: 75
+  amount: 200
 --- !u!1 &250350047
 GameObject:
   m_ObjectHideFlags: 0

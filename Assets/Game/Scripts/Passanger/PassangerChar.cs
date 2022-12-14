@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using TMPro;
 
 public class PassangerChar : MonoBehaviour
 {
     public Animation canvasAnim;
+    public TMP_Text moneyText;
 
     [SerializeField] GameObject[] type;
 
@@ -18,7 +20,10 @@ public class PassangerChar : MonoBehaviour
         type[randomize].SetActive(true);
         anim = type[randomize].GetComponent<Animator>();
     }
-
+    private void Update()
+    {
+        moneyText.text = "$"+ MoneyManager.instance.GetIncomeValue();
+    }
     public void Jump()
     {
         for (int i = 0; i < type.Length; i++)
