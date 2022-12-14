@@ -137,7 +137,8 @@ public class StationController : MonoBehaviour
     IEnumerator PassangerRandomMove(GameObject passanger)
     {
         yield return new WaitForSeconds(0.6f);
-
+        Vector3 passangerScale = new Vector3(0.173201054f, 0.173201054f, 0.173201054f);
+        passanger.transform.localScale = passangerScale;
         MoneyManager.instance.IncreaseCurrentMoney(MoneyManager.instance.GetIncomeValue());
         passanger.GetComponent<PassangerChar>().canvasAnim.Play();
 
