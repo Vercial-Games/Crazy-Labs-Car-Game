@@ -6,30 +6,30 @@ using PathCreation.Examples;
 
 public class CarController : MonoBehaviour
 {
-    public int PassangersCount;
+    #region VARIABLES
     public CarController forwardCar;
     public Animator animator;
     public AudioClip[] soundEffects;
+    public int PassangersCount;
 
     AudioSource source;
-
     PathFollower pathFollower = null;
     CarMover carMover;
     CarType carType;
+    #endregion
 
+    #region METHODS
     private void Start()
+    {
+        References();
+        PlaySound(0);
+    }
+    private void References()
     {
         pathFollower = GetComponent<PathFollower>();
         carMover = GetComponent<CarMover>();
         carType = GetComponent<CarType>();
         source = GetComponent<AudioSource>();
-        PlaySound(0);
-    }
-
-    public void PlaySound(int value)
-    {
-        source.clip = soundEffects[value];
-        source.Play();
     }
 
     private void Update()
@@ -42,12 +42,21 @@ public class CarController : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        TrafficCalculator();
+    }
+    public void PlaySound(int value)
+    {
+        source.clip = soundEffects[value];
+        source.Play();
+    }
+    private void TrafficCalculator()
+    {
         RaycastHit hit;
         Ray ray = new Ray(transform.position, transform.TransformDirection(Vector3.forward));
 
         if (Physics.Raycast(ray, out hit))
         {
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 0.65f, Color.red);
+            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 0.15f, Color.red);
 
             if (hit.transform.gameObject.GetComponent<CarController>())
             {
@@ -59,11 +68,15 @@ public class CarController : MonoBehaviour
                 forwardCar = null;
             }
         }
+        else
+        {
+            forwardCar = null;
+        }
     }
     public void LevelUp()
     {
         PlaySound(2);
-
+        PassangersCount = 0;
         carType.LevelUp();
     }
     public void DestroyCar()
@@ -74,4 +87,5 @@ public class CarController : MonoBehaviour
     {
         return !carMover.onStation;
     }
+    #endregion 
 }

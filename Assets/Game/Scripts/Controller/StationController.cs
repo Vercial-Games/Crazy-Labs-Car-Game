@@ -4,6 +4,7 @@ using UnityEngine;
 using DG.Tweening;
 public class StationController : MonoBehaviour
 {
+    #region VARIABLES
     public bool isTakeStation;
 
     [SerializeField] Transform dropPosition = null;
@@ -15,7 +16,9 @@ public class StationController : MonoBehaviour
     CarController carController;
     CarType carType;
     PassangerStation passangerStation;
+    #endregion
 
+    #region METHODS
     private void Start()
     {
         gate = FindObjectOfType<Gate>();
@@ -31,6 +34,7 @@ public class StationController : MonoBehaviour
 
             if (isTakeStation)
             {
+                carController.PassangersCount = 0;
                 StartCoroutine(TakePassangers());
                 carController.PlaySound(1);
             }
@@ -59,24 +63,36 @@ public class StationController : MonoBehaviour
         carController = null;
         carType = null;
     }
+    #endregion
 
+    #region ENUMERATORS
     IEnumerator DropPassangers()
     {
+        Vector3 passangerScale = new Vector3(0.173201054f, 0.173201054f, 0.173201054f);
+
         for (int i = 0; i < carController.PassangersCount; i++)
         {
             GameObject passanger = PassangerPool.instance.GetPooledObject();
-            passanger.SetActive(true);
-            passanger.GetComponent<PassangerChar>().JumpSound();
-            passanger.transform.position = car.transform.position;
-            passanger.transform.DOJump(dropPosition.position, 0.5f, 1, 1.5f);
-           
+            if (passanger != null)
+            {
+                passanger.transform.localScale = passangerScale;
+                passanger.transform.position = car.transform.position;
+                passanger.transform.DOJump(dropPosition.position, 0.5f, 1, 1f);
+                passanger.SetActive(true);
+                passanger.GetComponent<PassangerChar>().JumpSound();
+            }
             HapticManager.instance.SoftHaptic();
+
             yield return new WaitForSeconds(0.4f);
+
             StartCoroutine(PassangerRandomMove(passanger));
 
         }
 
         yield return new WaitForSeconds(1);
+
+        carController.PassangersCount = 0;
+
         RemoveCarInfo();
     }
     IEnumerator TakePassangers()
@@ -113,16 +129,14 @@ public class StationController : MonoBehaviour
     IEnumerator ClosePassangerMesh(GameObject passanger)
     {
         Vector3 passangerScale = new Vector3(0.173201054f, 0.173201054f, 0.173201054f);
-
         passanger.transform.DOScale(0, 2f);
-        yield return new WaitForSeconds(2f);
-        passanger.SetActive(false);
+        yield return new WaitForSeconds(1f);
         passanger.transform.DOScale(passangerScale, 0.1f);
-
+        passanger.SetActive(false);
     }
     IEnumerator PassangerRandomMove(GameObject passanger)
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.6f);
 
         MoneyManager.instance.IncreaseCurrentMoney(MoneyManager.instance.GetIncomeValue());
         passanger.GetComponent<PassangerChar>().canvasAnim.Play();
@@ -131,12 +145,13 @@ public class StationController : MonoBehaviour
 
         int random = Random.Range(0, randomPlaces.Length);
 
-        passanger.transform.DOMove(randomPlaces[random].position,4);
-        passanger.transform.DOLookAt(randomPlaces[random].position,1);
+        passanger.transform.DOMove(randomPlaces[random].position, 4);
+        passanger.transform.DOLookAt(randomPlaces[random].position, 1);
 
         yield return new WaitForSeconds(4);
-        ClosePassangerMesh(passanger);
+        StartCoroutine(ClosePassangerMesh(passanger));
 
 
     }
+    #endregion
 }

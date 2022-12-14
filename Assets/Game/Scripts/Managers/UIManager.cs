@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
 
+    #region VARIABLES
     public TMP_Text money;
 
     public TMP_Text carPrice;
@@ -20,6 +21,9 @@ public class UIManager : MonoBehaviour
     public Button mergeButton;
     public Button incomeButton;
 
+    #endregion
+
+    #region METHODS
     private void Awake()
     {
         instance = this;
@@ -44,5 +48,5 @@ public class UIManager : MonoBehaviour
         money.DOColor(Color.black, 0.3f);
     }
 
-
+    #endregion
 }

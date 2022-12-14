@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CarType : MonoBehaviour
 {
+    #region VARIABLES
     public int PassangerCapacity;
     public enum Type
     {
@@ -17,7 +18,9 @@ public class CarType : MonoBehaviour
     public GameObject taxi;
     public GameObject uber;
     public GameObject bus;
+    #endregion
 
+    #region METHODS
     private void Start()
     {
         GetCarType();
@@ -49,6 +52,7 @@ public class CarType : MonoBehaviour
         {
             PlayerController.instance.UberCount--;
         }
+        Destroy(this);
     }
     private void GetCarType()
     {
@@ -95,5 +99,5 @@ public class CarType : MonoBehaviour
             bus.SetActive(true);
         }
     }
-
+    #endregion
 }

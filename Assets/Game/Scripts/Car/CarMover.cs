@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CarMover : MonoBehaviour
 {
+    #region VARIABLES
     public bool onStation;
 
     [SerializeField] float speed;
@@ -11,8 +12,9 @@ public class CarMover : MonoBehaviour
 
     float maxSpeed;
     float CdTimer;
+    #endregion
 
-
+    #region METHODS
     private void Start()
     {
         maxSpeed = speed;
@@ -54,4 +56,5 @@ public class CarMover : MonoBehaviour
     {
         return onStation;
     }
+    #endregion
 }

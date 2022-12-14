@@ -6,15 +6,15 @@ public class MoneyManager : MonoBehaviour
 {
     public static MoneyManager instance;
 
+    #region VARIABLES
+
     public float incomeSpeed = 0.5f;
     [SerializeField] float currentMoney = 5;
     [SerializeField] float incomeValue = 3;
-
     [SerializeField] AudioSource source;
+    #endregion
 
-    
-
-
+    #region METHODS
     private void Awake()
     {
         instance = this;
@@ -53,5 +53,5 @@ public class MoneyManager : MonoBehaviour
     {
         return currentMoney -= value;
     }
-
+    #endregion
 }

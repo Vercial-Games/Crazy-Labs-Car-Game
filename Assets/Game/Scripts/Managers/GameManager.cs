@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
+    #region VARIABLES
+
     [SerializeField] GameObject settingsCanvas;
     [SerializeField] GameObject tutorialCanvas;
     [SerializeField] GameObject cam1;
@@ -15,12 +17,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] AudioMixer audioMixer;
 
     public bool gamePaused;
+    #endregion
 
+    #region METHODS
     private void Awake()
     {
         instance = this;
     }
-
     public void OpenSettings()
     {
         settingsCanvas.SetActive(true);
@@ -55,10 +58,9 @@ public class GameManager : MonoBehaviour
     {
         MMVibrationManager.SetHapticsActive(value);
     }
-
     public void OpenCloseTutorial(bool state)
     {
-        tutorialCanvas.SetActive(state);
+        tutorialCanvas.SetActive(true);
     }
     void PauseGame()
     {
@@ -70,5 +72,5 @@ public class GameManager : MonoBehaviour
         gamePaused = false;
         Time.timeScale = 1;
     }
-
+    #endregion
 }

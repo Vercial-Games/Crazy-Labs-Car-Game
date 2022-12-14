@@ -9,10 +9,12 @@ public class PlayerController : MonoBehaviour
 {
     public static PlayerController instance;
 
+    #region VARIABLES
     [SerializeField] GameObject carPrefab;
     [SerializeField] CarSpawner carSpawner;
     [SerializeField] List<GameObject> currentCars;
     [SerializeField] List<CarController> mergeCars;
+    [SerializeField] float speedBuff;
 
     public int TaxiCount;
     public int UberCount;
@@ -27,7 +29,9 @@ public class PlayerController : MonoBehaviour
     public float BuffCooldown;
 
     float CdTimer;
+    #endregion
 
+    #region METHODS
     private void Awake()
     {
         instance = this;
@@ -47,15 +51,18 @@ public class PlayerController : MonoBehaviour
             SpeedBuff();
             CooldownTimer();
         }
-            
+
     }
+    #endregion
+
+    #region TimeScaleBuff
     private void SpeedBuff()
     {
         if (Input.GetMouseButtonDown(0))
         {
             GameManager.instance.OpenCloseTutorial(false);
             HapticManager.instance.SelectHaptic();
-            Time.timeScale = 4;
+            Time.timeScale = speedBuff;
             SetCoolDown(0);
         }
     }
@@ -83,6 +90,7 @@ public class PlayerController : MonoBehaviour
 
         return Time.timeScale = equal;
     }
+    #endregion
 
     #region AddCar
 
@@ -201,9 +209,9 @@ public class PlayerController : MonoBehaviour
         MoneyManager.instance.DecreaseCurrentMoney(incomePrice);
         incomePrice += 5;
 
-        MoneyManager.instance.incomeSpeed += 0.5f;
+        MoneyManager.instance.incomeSpeed += 0.2f;
 
-        MoneyManager.instance.IncreaseIncomeValue(2);
+        MoneyManager.instance.IncreaseIncomeValue(1);
     }
 
     #endregion
