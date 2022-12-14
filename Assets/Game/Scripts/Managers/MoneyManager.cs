@@ -6,10 +6,12 @@ public class MoneyManager : MonoBehaviour
 {
     public static MoneyManager instance;
 
-    public float incomeSpeed=0.5f;
-    [SerializeField]float currentMoney = 5;
+    public float incomeSpeed = 0.5f;
+    [SerializeField] float currentMoney = 5;
+    [SerializeField] AudioSource source;
 
     float incomeValue = 2;
+
 
     private void Awake()
     {
@@ -18,7 +20,8 @@ public class MoneyManager : MonoBehaviour
 
     private void Update()
     {
-        currentMoney += Time.unscaledDeltaTime*incomeSpeed;
+        if (!GameManager.instance.gamePaused)
+            currentMoney += Time.unscaledDeltaTime * incomeSpeed;
     }
 
     public float GetCurrentMoney()
@@ -37,6 +40,7 @@ public class MoneyManager : MonoBehaviour
 
     public float IncreaseIncomeValue(float value)
     {
+        source.Play();
         return currentMoney += value;
     }
     public float IncreaseCurrentMoney(float value)

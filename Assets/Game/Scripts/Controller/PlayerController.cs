@@ -4,7 +4,7 @@ using UnityEngine;
 using PathCreation;
 using PathCreation.Examples;
 using DG.Tweening;
-
+using UnityEngine.Audio;
 public class PlayerController : MonoBehaviour
 {
     public static PlayerController instance;
@@ -41,8 +41,12 @@ public class PlayerController : MonoBehaviour
         UIManager.instance.mergeButton.interactable = MergeControl();
         UIManager.instance.incomeButton.interactable = IncomeControl();
 
-        SpeedBuff();
-        CooldownTimer();
+        if (!GameManager.instance.gamePaused)
+        {
+            SpeedBuff();
+            CooldownTimer();
+        }
+            
     }
     private void SpeedBuff()
     {

@@ -57,18 +57,21 @@ public class CarType : MonoBehaviour
             PassangerCapacity = 1;
             ChangeCarSkin(Type.Taxi);
             PlayerController.instance.TaxiCount++;
+            GetComponent<CarController>().animator = taxi.GetComponent<Animator>();
         }
         else if (carType == Type.Uber)
         {
             PassangerCapacity = 3;
             ChangeCarSkin(Type.Uber);
             PlayerController.instance.UberCount++;
+            GetComponent<CarController>().animator = uber.GetComponent<Animator>();
         }
         else if (carType == Type.Bus)
         {
             PassangerCapacity = 5;
             ChangeCarSkin(Type.Bus);
             PlayerController.instance.BusCount++;
+            GetComponent<CarController>().animator = bus.GetComponent<Animator>();
         }
     }
     void ChangeCarSkin(Type type)

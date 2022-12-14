@@ -32,14 +32,5 @@ public class HapticManager : MonoBehaviour
     {
         MMVibrationManager.Haptic(HapticTypes.Warning);
     }
-    public void CloseHaptic()
-    {
-        MMVibrationManager.SetHapticsActive(false);
-     
-    }
-    public void OpenHaptic()
-    {
-        MMVibrationManager.SetHapticsActive(true);
-    }
 }
 

@@ -37,6 +37,7 @@ public class PassangerStation : MonoBehaviour
             if (!fullArea[i] && i < passangers.Count)
             {
                 passangers[i].transform.DOMove(passangerOrder[i].position, 1);
+                passangers[i].GetComponent<PassangerChar>().Jump();
                 fullArea[i] = true;
                 fullArea[i + 1] = false;
             }
