@@ -8,9 +8,11 @@ public class MoneyManager : MonoBehaviour
 
     public float incomeSpeed = 0.5f;
     [SerializeField] float currentMoney = 5;
+    [SerializeField] float incomeValue = 3;
+
     [SerializeField] AudioSource source;
 
-    float incomeValue = 3;
+    
 
 
     private void Awake()
@@ -41,7 +43,7 @@ public class MoneyManager : MonoBehaviour
     public float IncreaseIncomeValue(float value)
     {
         source.Play();
-        return currentMoney += value;
+        return incomeValue += value;
     }
     public float IncreaseCurrentMoney(float value)
     {

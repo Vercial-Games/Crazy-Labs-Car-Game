@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public static PlayerController instance;
 
     [SerializeField] GameObject carPrefab;
+    [SerializeField] CarSpawner carSpawner;
     [SerializeField] List<GameObject> currentCars;
     [SerializeField] List<CarController> mergeCars;
 
@@ -52,7 +53,8 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            HapticManager.instance.SoftHaptic();
+            GameManager.instance.OpenCloseTutorial(false);
+            HapticManager.instance.SelectHaptic();
             Time.timeScale = 4;
             SetCoolDown(0);
         }
@@ -67,6 +69,11 @@ public class PlayerController : MonoBehaviour
         if (CdTimer >= BuffCooldown)
         {
             SmoothResetSpeed(3, 1);
+
+            if (CdTimer > 3)
+            {
+                GameManager.instance.OpenCloseTutorial(true);
+            }
         }
     }
     public float SmoothResetSpeed(float value, float equal)
@@ -82,6 +89,8 @@ public class PlayerController : MonoBehaviour
     private bool AddCarControl()
     {
         if (MoneyManager.instance.GetCurrentMoney() < carPrice) return false;
+
+        if (!carSpawner.empty) return false;
 
         if (currentCars.Count > 7) return false;
 

@@ -70,7 +70,7 @@ public class StationController : MonoBehaviour
             passanger.transform.position = car.transform.position;
             passanger.transform.DOJump(dropPosition.position, 0.5f, 1, 1.5f);
            
-            HapticManager.instance.SelectHaptic();
+            HapticManager.instance.SoftHaptic();
             yield return new WaitForSeconds(0.4f);
             StartCoroutine(PassangerRandomMove(passanger));
 
@@ -93,7 +93,7 @@ public class StationController : MonoBehaviour
             passangerStation.passangers[i].transform.DOJump(car.transform.position, 0.5f, 1, 1.5f);
             passangerStation.passangers[i].GetComponent<PassangerChar>().Jump();
             passangerStation.passangers[i].GetComponent<PassangerChar>().JumpSound();
-            HapticManager.instance.SelectHaptic();
+            HapticManager.instance.SoftHaptic();
 
             yield return new WaitForSeconds(0.4f);
 
@@ -126,6 +126,7 @@ public class StationController : MonoBehaviour
 
         MoneyManager.instance.IncreaseCurrentMoney(MoneyManager.instance.GetIncomeValue());
         passanger.GetComponent<PassangerChar>().canvasAnim.Play();
+
         UIManager.instance.MoneyColorAnim();
 
         int random = Random.Range(0, randomPlaces.Length);

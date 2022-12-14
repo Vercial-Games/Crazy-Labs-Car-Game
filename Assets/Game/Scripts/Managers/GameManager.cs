@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     [SerializeField] GameObject settingsCanvas;
+    [SerializeField] GameObject tutorialCanvas;
     [SerializeField] GameObject cam1;
     [SerializeField] GameObject cam2;
     [SerializeField] AudioMixer audioMixer;
@@ -55,6 +56,10 @@ public class GameManager : MonoBehaviour
         MMVibrationManager.SetHapticsActive(value);
     }
 
+    public void OpenCloseTutorial(bool state)
+    {
+        tutorialCanvas.SetActive(state);
+    }
     void PauseGame()
     {
         gamePaused = true;
