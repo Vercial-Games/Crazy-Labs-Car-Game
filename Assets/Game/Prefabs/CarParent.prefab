@@ -120,8 +120,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onStation: 0
   speed: 0.5
-  speedBuff: 1.5
-  speedBuffCooldown: 0.2
   smoothReset: 2
 --- !u!114 &5622944381727066218
 MonoBehaviour:

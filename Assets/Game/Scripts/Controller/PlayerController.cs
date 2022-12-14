@@ -48,6 +48,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
+            HapticManager.instance.SoftHaptic();
             Time.timeScale = 4;
             SetCoolDown(0);
         }

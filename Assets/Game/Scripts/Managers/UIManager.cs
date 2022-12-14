@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
 
 public class UIManager : MonoBehaviour
 {
@@ -32,6 +33,16 @@ public class UIManager : MonoBehaviour
         incomePrice.text = "$ " + PlayerController.instance.incomePrice.ToString();
     }
 
+    public void MoneyColorAnim()
+    {
+        StartCoroutine(MoneyGreen());
+    }
+    IEnumerator MoneyGreen()
+    {
+        money.DOColor(Color.green,0.3f);
+        yield return new WaitForSecondsRealtime(0.3f);
+        money.DOColor(Color.black, 0.3f);
+    }
 
 
 }

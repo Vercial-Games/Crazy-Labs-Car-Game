@@ -5,7 +5,7 @@ using UnityEngine;
 public class PassangerChar : MonoBehaviour
 {
     public Animator anim;
-
+    public Animation canvasAnim;
     [SerializeField] GameObject[] type;
 
     private void Start()

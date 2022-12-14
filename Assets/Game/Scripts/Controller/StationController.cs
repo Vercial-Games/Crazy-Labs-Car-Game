@@ -65,6 +65,7 @@ public class StationController : MonoBehaviour
             passanger.SetActive(true);
             passanger.transform.position = car.transform.position;
             passanger.transform.DOJump(dropPosition.position, 0.5f, 1, 1.5f);
+            HapticManager.instance.SelectHaptic();
             yield return new WaitForSeconds(0.4f);
             StartCoroutine(PassangerRandomMove(passanger));
             MoneyManager.instance.IncreaseCurrentMoney(MoneyManager.instance.GetIncomeValue());
@@ -85,6 +86,7 @@ public class StationController : MonoBehaviour
         {
             carController.PassangersCount++;
             passangerStation.passangers[i].transform.DOJump(car.transform.position, 0.5f, 1, 1.5f);
+            HapticManager.instance.SelectHaptic();
 
             yield return new WaitForSeconds(0.4f);
 
@@ -114,6 +116,9 @@ public class StationController : MonoBehaviour
     IEnumerator PassangerRandomMove(GameObject passanger)
     {
         yield return new WaitForSeconds(1f);
+
+        passanger.GetComponent<PassangerChar>().canvasAnim.Play();
+        UIManager.instance.MoneyColorAnim();
 
         int random = Random.Range(0, randomPlaces.Length);
 
