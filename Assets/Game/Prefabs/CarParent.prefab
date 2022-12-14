@@ -137,6 +137,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PassangerCapacity: 0
   carType: 0
+  taxi: {fileID: 9052726644969852642}
+  uber: {fileID: 9052726646546743849}
+  bus: {fileID: 9052726646443176168}
 --- !u!1001 &8169766368392531385
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -210,6 +213,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20e929309b56fa64b920012c6c1d7cbd, type: 3}
+--- !u!1 &9052726646443176168 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 20e929309b56fa64b920012c6c1d7cbd, type: 3}
+  m_PrefabInstance: {fileID: 8169766368392531385}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8568782494181435986 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 20e929309b56fa64b920012c6c1d7cbd, type: 3}
@@ -292,6 +300,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 698a8beb8595c8340b89da32ef6fb09b, type: 3}
+--- !u!1 &9052726646546743849 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 698a8beb8595c8340b89da32ef6fb09b, type: 3}
+  m_PrefabInstance: {fileID: 8169766368496648056}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8568782494035450003 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 698a8beb8595c8340b89da32ef6fb09b, type: 3}
@@ -374,6 +387,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9973ebf4917f00749a5af0e8e12ab3b3, type: 3}
+--- !u!1 &9052726644969852642 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 9973ebf4917f00749a5af0e8e12ab3b3, type: 3}
+  m_PrefabInstance: {fileID: 8169766370140582835}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8568782492391445592 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9973ebf4917f00749a5af0e8e12ab3b3, type: 3}

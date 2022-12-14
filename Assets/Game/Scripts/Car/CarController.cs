@@ -6,15 +6,17 @@ using PathCreation.Examples;
 public class CarController : MonoBehaviour
 {
     public int PassangersCount;
+    public CarController forwardCar;
 
     PathFollower pathFollower = null;
     CarMover carMover;
-    [SerializeField] CarController forwardCar;
+    CarType carType;
 
     private void Start()
     {
         pathFollower = GetComponent<PathFollower>();
         carMover = GetComponent<CarMover>();
+        carType= GetComponent<CarType>();
     }
 
     private void Update()
@@ -51,6 +53,14 @@ public class CarController : MonoBehaviour
             carMover.SpeedBuff();
             carMover.SetCoolDown(0);
         }
+    }
+    public void LevelUp()
+    {
+        carType.LevelUp();
+    }
+    public void DestroyCar()
+    {
+        carType.DestroyCar();
     }
 
 }

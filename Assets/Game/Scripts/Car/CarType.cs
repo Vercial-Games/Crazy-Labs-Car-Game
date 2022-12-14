@@ -22,36 +22,54 @@ public class CarType : MonoBehaviour
     {
         GetCarType();
     }
-    private void GetCarType()
-    {
-        if (carType == Type.Taxi)
-        {
-            PassangerCapacity = 3;
-            ChangeCarSkin(Type.Taxi);
-        }
-        if (carType == Type.Uber)
-        {
-            PassangerCapacity = 5;
-            ChangeCarSkin(Type.Uber);
-        }
-        if (carType == Type.Bus)
-        {
-            PassangerCapacity = 10;
-            ChangeCarSkin(Type.Bus);
-        }
-    }
     public void LevelUp()
     {
-        if (carType == Type.Taxi)
-        {
-            carType = Type.Uber;
-        }
         if (carType == Type.Uber)
         {
             carType = Type.Bus;
         }
+        else if (carType == Type.Taxi)
+        {
+            carType = Type.Uber;
+        }
 
         GetCarType();
+    }
+    public void DestroyCar()
+    {
+        if (carType == Type.Taxi)
+        {
+            PlayerController.instance.TaxiCount--;
+        }
+        if (carType == Type.Uber)
+        {
+            PlayerController.instance.UberCount--;
+        }
+        if (carType == Type.Bus)
+        {
+            PlayerController.instance.UberCount--;
+        }
+    }
+    private void GetCarType()
+    {
+        if (carType == Type.Taxi)
+        {
+            PassangerCapacity = 1;
+            ChangeCarSkin(Type.Taxi);
+            PlayerController.instance.TaxiCount++;
+        }
+        else if (carType == Type.Uber)
+        {
+            PassangerCapacity = 3;
+            ChangeCarSkin(Type.Uber);
+            PlayerController.instance.UberCount++;
+        }
+        else if (carType == Type.Bus)
+        {
+            PassangerCapacity = 5;
+            ChangeCarSkin(Type.Bus);
+            PlayerController.instance.BusCount++;
+        }
     }
     void ChangeCarSkin(Type type)
     {
@@ -74,4 +92,5 @@ public class CarType : MonoBehaviour
             bus.SetActive(true);
         }
     }
+
 }

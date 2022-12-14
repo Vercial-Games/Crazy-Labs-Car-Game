@@ -5,8 +5,11 @@ using UnityEngine;
 public class MoneyManager : MonoBehaviour
 {
     public static MoneyManager instance;
-    float incomeValue = 5;
-    float currentMoney = 10;
+
+    public float incomeSpeed=1;
+    [SerializeField]float currentMoney = 5;
+
+    float incomeValue = 2;
 
     private void Awake()
     {
@@ -15,7 +18,7 @@ public class MoneyManager : MonoBehaviour
 
     private void Update()
     {
-        currentMoney += Time.deltaTime;
+        currentMoney += Time.deltaTime*incomeSpeed;
     }
 
     public float GetCurrentMoney()
